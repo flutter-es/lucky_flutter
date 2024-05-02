@@ -6,7 +6,13 @@ class LuckyFlutterHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text('header'),
+      alignment: Alignment.topCenter,
+      child: const Text(
+        'Lucky Fluter',
+        style: TextStyle(
+          fontSize: 80,
+        ),
+      ),
     );
   }
 }

@@ -12,7 +12,6 @@ class LuckyFlutterMain extends StatelessWidget {
       body: Stack(
         children: [
           LuckyFlutterBg(),
-
           Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,

@@ -1,18 +1,35 @@
 import 'package:flutter/material.dart';
 
-class LuckyFlutterLevel extends StatefulWidget {
-  const LuckyFlutterLevel({super.key});
+import '../widgets/lucky_flutter_bg.dart';
+
+class LuckyFlutterLever extends StatefulWidget {
+  const LuckyFlutterLever({super.key});
 
   @override
-  State<LuckyFlutterLevel> createState() => _LuckyFlutterLevelState();
+  State<LuckyFlutterLever> createState() => _LuckyFlutterLeverState();
 }
 
-class _LuckyFlutterLevelState extends State<LuckyFlutterLevel> {
+class _LuckyFlutterLeverState extends State<LuckyFlutterLever> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text('palanca')
+    return const Scaffold(
+      body: Stack(
+        children: [
+          LuckyFlutterBg(),
+          Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                //TODO Containers holding the lever
+              ],
+            ),
+          ),
+
+          // LuckyFlutterResetPanel(),
+          // LuckyFlutterResultPanel(),
+        ],
       ),
     );
   }
