@@ -8,12 +8,11 @@ class LuckyFlutterRoulette extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return const Stack(
       children: [
         LuckyFlutterRouletteContainer(
-          child: LuckyFlutterRouletteWheels()
+          child: LuckyFlutterRouletteWheels(),
         ),
-
         LuckyFlutterMarker(),
       ],
     );
