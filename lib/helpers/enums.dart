@@ -1,9 +1,9 @@
 enum LuckyRouletteResults {
-  none('reset'),
   fcl('fcl'),
-  dash('dash'),
+  android('android'),
   sparky('sparky'),
-  android('android');
+  dash('dash'),
+  none('reset');
 
   final String label;
   const LuckyRouletteResults(this.label);
