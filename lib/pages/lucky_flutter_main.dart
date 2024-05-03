@@ -21,7 +21,6 @@ class LuckyFlutterMain extends ConsumerWidget {
       body: Stack(
         children: [
           LuckyFlutterBg(),
-
           Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
