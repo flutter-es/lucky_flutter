@@ -1,18 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lucky_flutter/helpers/constants.dart';
+import 'package:lucky_flutter/helpers/enums.dart';
+import 'package:lucky_flutter/providers/lucky_roulette_providers.dart';
 import 'package:rive/rive.dart';
 
-class LuckyFlutterRouletteWheel extends StatefulWidget {
-  const LuckyFlutterRouletteWheel({super.key});
+class LuckyFlutterRouletteWheel extends ConsumerStatefulWidget {
+
+  final int index;
+  const LuckyFlutterRouletteWheel({
+    required this.index,
+    super.key
+  });
 
   @override
-  State<LuckyFlutterRouletteWheel> createState() => _LuckyFlutterRouletteWheelState();
+  ConsumerState<LuckyFlutterRouletteWheel> createState() => _LuckyFlutterRouletteWheelState();
 }
 
-class _LuckyFlutterRouletteWheelState extends State<LuckyFlutterRouletteWheel> {
+class _LuckyFlutterRouletteWheelState extends ConsumerState<LuckyFlutterRouletteWheel> {
 
   late RiveAnimation anim;
   late StateMachineController ctrl;
+  Map<LuckyRouletteResults, SMITrigger> results = {};
+  bool isInitialized = false;
 
   @override
   void initState() {
@@ -28,10 +38,25 @@ class _LuckyFlutterRouletteWheelState extends State<LuckyFlutterRouletteWheel> {
   void onRiveInit(Artboard ab) {
     ctrl = StateMachineController.fromArtboard(ab, 'mainwheel')!;
     ab.addController(ctrl);
+
+    for(var result in LuckyRouletteResults.values) {
+      results[result] = ctrl.findSMI(result.label) as SMITrigger;
+    }
+
+    setState(() {
+      isInitialized = true;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+
+    final wheelMetadata = ref.watch(luckyWheelProvider);
+
+    if (isInitialized && wheelMetadata.index == widget.index) {
+      results[wheelMetadata.result]!.fire();
+    }
+
     return SizedBox(
       width: 250,
       height: 700,

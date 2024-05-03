@@ -10,7 +10,7 @@ class LuckyFlutterRouletteWheels extends StatelessWidget {
       children: List.generate(3, (index) {
         return Container(
           margin: const EdgeInsets.symmetric(horizontal: 8),
-          child: const LuckyFlutterRouletteWheel()
+          child: LuckyFlutterRouletteWheel(index: index)
         );
       })
     );

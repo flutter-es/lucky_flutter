@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lucky_flutter/pages/lucky_flutter_lever.dart';
 import 'package:lucky_flutter/pages/lucky_flutter_main.dart';
 
 void main() {
-  runApp(const LuckyFlutterApp());
+  runApp(const ProviderScope(child: LuckyFlutterApp()));
 }
 
 class LuckyFlutterApp extends StatelessWidget {
