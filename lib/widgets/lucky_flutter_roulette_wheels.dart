@@ -7,6 +7,7 @@ class LuckyFlutterRouletteWheels extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(3, (index) {
         return Container(
           margin: const EdgeInsets.symmetric(horizontal: 8),
