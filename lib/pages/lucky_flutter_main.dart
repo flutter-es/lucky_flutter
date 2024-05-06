@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lucky_flutter/helpers/enums.dart';
@@ -13,21 +14,22 @@ class LuckyFlutterMain extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
 
-    Future.delayed(1.seconds, () {
-      ref.read(luckyRouletteStateListenerProvider);
-    });
-
-    return const Scaffold(
+    return Scaffold(
       body: Stack(
         children: [
-          LuckyFlutterBg(),
+          const LuckyFlutterBg(),
           Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                LuckyFlutterHeader(),
+                GestureDetector(
+                  onTap: () {
+                    ref.read(luckyFlutterRouletteStateProvider.notifier).spin();
+                  },
+                  child: LuckyFlutterHeader()
+                ),
                 LuckyFlutterRoulette(),
               ],
             ),
