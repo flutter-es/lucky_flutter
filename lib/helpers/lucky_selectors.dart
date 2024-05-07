@@ -1,29 +1,35 @@
 import 'package:flutter/material.dart';
 
-import 'colors.dart';
-
 class LuckySelectors extends StatelessWidget {
-  const LuckySelectors({super.key});
+  final dynamic color;
+  final dynamic width;
+  final dynamic height;
+
+  const LuckySelectors(
+      {super.key,
+      required this.color,
+      required this.width,
+      required this.height});
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Icon(
           Icons.arrow_right,
-          size: 180,
-          color: LuckyFlutterColors.markerBox,
+          size: 200,
+          color: color,
         ),
         SizedBox(
-          width: 565,
-          height: 250,
+          width: width,
+          height: height,
         ),
         Icon(
           Icons.arrow_left,
-          size: 180,
-          color: LuckyFlutterColors.markerBox,
+          size: 200,
+          color: color,
         ),
       ],
     );

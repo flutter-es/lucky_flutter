@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lucky_flutter/helpers/backround_containers.dart';
 import 'package:lucky_flutter/widgets/lucky_flutter_marker.dart';
 import 'package:lucky_flutter/widgets/lucky_flutter_roulette_container.dart';
 import 'package:lucky_flutter/widgets/lucky_flutter_roulette_wheels.dart';
@@ -11,6 +12,9 @@ class LuckyFlutterRoulette extends StatelessWidget {
     return const Stack(
       alignment: Alignment.center,
       children: [
+        DevilContainer(),
+        AngelContainer(),
+        LimboContainer(),
         LuckyFlutterRouletteContainer(
           child: LuckyFlutterRouletteWheels(),
         ),
