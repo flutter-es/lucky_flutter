@@ -29,7 +29,7 @@ class _LuckyFlutterLeverPageState extends ConsumerState<LuckyFlutterLeverPage> {
     return Scaffold(
       body: Stack(
         children: [
-          LuckyFlutterBg(),
+          const LuckyFlutterBg(),
 
           Center(
             child: SizedBox(
@@ -48,7 +48,6 @@ class _LuckyFlutterLeverPageState extends ConsumerState<LuckyFlutterLeverPage> {
                         onVerticalDragUpdate: (details) {
                           lastDraggedValue = details.localPosition.dy * 0.35;
                           ref.read(leverValueProvider.notifier).state = lastDraggedValue;
-                          print(lastDraggedValue);
                         },
                         onVerticalDragEnd: (details) {
                           Timer.periodic(0.00125.seconds, (timer) {
@@ -62,7 +61,7 @@ class _LuckyFlutterLeverPageState extends ConsumerState<LuckyFlutterLeverPage> {
                           });
                         },
                         child: Container(
-                          color: Colors.grey.withOpacity(0.25),
+                          color: Colors.transparent,
                         ),
                       )
                     ],
