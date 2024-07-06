@@ -11,3 +11,7 @@ final luckyWheelProvider = StateProvider<LuckyFlutterWheelMetadata>((ref) {
 final luckyFlutterRouletteStateProvider = StateNotifierProvider<LuckyFlutterTriggerViewModel, LuckyRouletteState>(
   (ref) => LuckyFlutterTriggerViewModel(LuckyRouletteState.none, ref)
 );
+
+final leverValueProvider = StateProvider<double>((ref) {
+  return 0;
+});

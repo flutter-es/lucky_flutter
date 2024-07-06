@@ -10,7 +10,7 @@ class LuckyFlutterApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: 'main',
       routes: {
-        'ctrl': (context) => const LuckyFlutterLever(),
+        'ctrl': (context) => const LuckyFlutterLeverPage(),
         'main': (context) => const LuckyFlutterMain()
       },
     );
