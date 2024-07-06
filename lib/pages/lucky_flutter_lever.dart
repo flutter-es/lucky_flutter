@@ -46,11 +46,16 @@ class _LuckyFlutterLeverPageState extends ConsumerState<LuckyFlutterLeverPage> {
                       ),
                       GestureDetector(
                         onVerticalDragUpdate: (details) {
-                          lastDraggedValue = details.localPosition.dy * 0.35;
+                          lastDraggedValue = details.localPosition.dy * 0.25;
                           ref.read(leverValueProvider.notifier).state = lastDraggedValue;
                         },
                         onVerticalDragEnd: (details) {
-                          Timer.periodic(0.00125.seconds, (timer) {
+
+                          if (lastDraggedValue > 50) {
+                            ref.read(luckyFlutterTriggerServiceProvider).remoteSpin();
+                          }
+                          
+                          Timer.periodic(0.000125.seconds, (timer) {
                             lastDraggedValue -= 1;
                             ref.read(leverValueProvider.notifier).state = lastDraggedValue;
 

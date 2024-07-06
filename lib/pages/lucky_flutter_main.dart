@@ -22,8 +22,7 @@ class LuckyFlutterMain extends ConsumerWidget {
               children: [
                 GestureDetector(
                     onTap: () {
-                      ref
-                          .read(luckyFlutterRouletteStateProvider.notifier)
+                      ref.read(luckyFlutterRouletteStateProvider.notifier)
                           .spin();
                     },
                     child: const LuckyFlutterHeader()),

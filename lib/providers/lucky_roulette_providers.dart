@@ -1,7 +1,9 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lucky_flutter/helpers/enums.dart';
 import 'package:lucky_flutter/models/luckywheel_metadata.dart';
+import 'package:lucky_flutter/services/lucky_flutter_trigger_service.dart';
 import 'package:lucky_flutter/viewmodels/luckyflutterroundstate_viewmodel.dart';
 
 final luckyWheelProvider = StateProvider<LuckyFlutterWheelMetadata>((ref) {
@@ -14,4 +16,10 @@ final luckyFlutterRouletteStateProvider = StateNotifierProvider<LuckyFlutterTrig
 
 final leverValueProvider = StateProvider<double>((ref) {
   return 0;
+});
+
+final fbInstanceProvider = Provider((ref) => FirebaseFirestore.instance);
+
+final luckyFlutterTriggerServiceProvider = Provider((ref) {
+  return LuckyFlutterTriggerService(ref);
 });
