@@ -30,7 +30,7 @@ class DevilContainer extends StatelessWidget {
         width: 920,
         height: 720,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(22),
+          borderRadius: BorderRadius.circular(30),
           color: LuckyFlutterColors.bgDevilContainer,
         ),
         alignment: Alignment.center,

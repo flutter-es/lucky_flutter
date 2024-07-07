@@ -18,12 +18,13 @@ class _LuckyFlutterAppState extends ConsumerState<LuckyFlutterApp> {
     super.initState();
 
     ref.read(luckyFlutterTriggerServiceProvider).bootstrapLuckyFlutterTrigger();
+    ref.read(soundServiceProvider).initializeSounds();
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: 'main',
+      initialRoute: 'ctrl',
       routes: {
         'ctrl': (context) => const LuckyFlutterLeverPage(),
         'main': (context) => const LuckyFlutterMain()

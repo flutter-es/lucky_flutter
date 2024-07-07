@@ -1,1 +1,1 @@
-{"flutter":{"platforms":{"dart":{"lib/firebase_options.dart":{"projectId":"lucky-flutter-project","configurations":{"web":"1:751874625731:web:585dc01986233ca3571276"}}}}}}
+{"flutter":{"platforms":{"dart":{"lib/firebase_options.dart":{"projectId":"lucky-flutter-project","configurations":{"android":"1:751874625731:android:bae7f4b9ea9c2711571276","web":"1:751874625731:web:585dc01986233ca3571276"}}},"android":{"default":{"projectId":"lucky-flutter-project","appId":"1:751874625731:android:bae7f4b9ea9c2711571276","fileOutput":"android/app/google-services.json"}}}}}

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "751874625731",
+    "project_id": "lucky-flutter-project",
+    "storage_bucket": "lucky-flutter-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:751874625731:android:bae7f4b9ea9c2711571276",
+        "android_client_info": {
+          "package_name": "com.example.lucky_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1i0zfpHlukc1ZwfR3P4JdBIHxR7vRb9c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

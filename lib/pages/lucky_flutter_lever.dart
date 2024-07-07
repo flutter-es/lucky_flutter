@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lucky_flutter/helpers/enums.dart';
 import 'package:lucky_flutter/providers/lucky_roulette_providers.dart';
 import 'package:lucky_flutter/widgets/lucky_flutter_bg.dart';
 import 'package:lucky_flutter/widgets/lucky_flutter_lever.dart';
@@ -46,18 +47,21 @@ class _LuckyFlutterLeverPageState extends ConsumerState<LuckyFlutterLeverPage> {
                       ),
                       GestureDetector(
                         onVerticalDragUpdate: (details) {
-                          lastDraggedValue = details.localPosition.dy * 0.25;
+                          //ref.read(soundServiceProvider).playSound(LuckyRouletteSounds.clank);
+                          lastDraggedValue = details.localPosition.dy * 0.15;
                           ref.read(leverValueProvider.notifier).state = lastDraggedValue;
                         },
                         onVerticalDragEnd: (details) {
 
                           if (lastDraggedValue > 50) {
                             ref.read(luckyFlutterTriggerServiceProvider).remoteSpin();
+                            ref.read(soundServiceProvider).playSound(LuckyRouletteSounds.spin);
                           }
                           
                           Timer.periodic(0.000125.seconds, (timer) {
                             lastDraggedValue -= 1;
                             ref.read(leverValueProvider.notifier).state = lastDraggedValue;
+                            //ref.read(soundServiceProvider).playSound(LuckyRouletteSounds.clank);
 
                             if (lastDraggedValue <= 0) {
                               timer.cancel();

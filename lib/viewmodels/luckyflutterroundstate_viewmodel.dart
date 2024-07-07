@@ -34,7 +34,7 @@ class LuckyFlutterTriggerViewModel extends StateNotifier<LuckyRouletteState> {
     int randomValue = Random().nextInt(potentialResults);
     randomValues.add(randomValue);
     
-    while(randomValues.length <= Constants.numberOfRoulettes || !randomValues.contains(randomValue)) {
+    while(randomValues.length < Constants.numberOfRoulettes || !randomValues.contains(randomValue)) {
       randomValues.add(randomValue);
       randomValue = Random().nextInt(potentialResults);
     }
@@ -47,6 +47,14 @@ class LuckyFlutterTriggerViewModel extends StateNotifier<LuckyRouletteState> {
       );
     }
 
-    state = LuckyRouletteState.win;
+    await Future.delayed(0.75.seconds);
+    print(randomValues.length);
+    if ((randomValues[0] == randomValues[1] && randomValues[1] == randomValues[2])) {
+        
+        state = LuckyRouletteState.win;
+      }
+      else {
+        state = LuckyRouletteState.none;
+      }
   }
 }

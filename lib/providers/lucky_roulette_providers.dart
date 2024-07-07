@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lucky_flutter/helpers/enums.dart';
 import 'package:lucky_flutter/models/luckywheel_metadata.dart';
 import 'package:lucky_flutter/services/lucky_flutter_trigger_service.dart';
+import 'package:lucky_flutter/services/sound_notification_service.dart';
 import 'package:lucky_flutter/viewmodels/luckyflutterroundstate_viewmodel.dart';
 
 final luckyWheelProvider = StateProvider<LuckyFlutterWheelMetadata>((ref) {
@@ -22,4 +23,8 @@ final fbInstanceProvider = Provider((ref) => FirebaseFirestore.instance);
 
 final luckyFlutterTriggerServiceProvider = Provider((ref) {
   return LuckyFlutterTriggerService(ref);
+});
+
+final soundServiceProvider = Provider((ref) {
+  return SoundNotificationService();
 });

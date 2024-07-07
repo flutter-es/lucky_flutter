@@ -14,3 +14,10 @@ enum LuckyRouletteState {
   spin,
   win,
 }
+
+enum LuckyRouletteSounds {
+  clank,
+  coinsfalling,
+  result,
+  spin,
+}

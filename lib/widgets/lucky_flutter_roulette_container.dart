@@ -8,8 +8,13 @@ class LuckyFlutterRouletteContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(16),
-      width: 800,
-      height: 600,
+      width: 810,
+      height: 610,
+      padding: EdgeInsets.all(5),
+      decoration: BoxDecoration(
+        color: Colors.black,
+        borderRadius: BorderRadius.circular(5),
+      ),
       child: child,
     );
   }
