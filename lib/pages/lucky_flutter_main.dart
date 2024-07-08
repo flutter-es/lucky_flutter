@@ -17,37 +17,48 @@ class LuckyFlutterMain extends ConsumerWidget {
       body: Stack(
         children: [
           const LuckyFlutterBg(),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: SizedBox(
-              width: 300,
-              height: 900,
-              child: LuckyFlutterLights())
-          ),
-          Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
+          
+          
+          const Center(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                GestureDetector(
-                    onTap: () {
-                      ref.read(luckyFlutterRouletteStateProvider.notifier)
-                          .spin();
-                    },
-                    child: const LuckyFlutterHeader()),
-                const LuckyFlutterRoulette(),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: SizedBox(
+                    width: 300,
+                    height: 900,
+                    child: LuckyFlutterLights())
+                ),
+                SizedBox(
+                  width: 1200,
+                  height: 1000,
+                  child: LuckyFlutterRoulette()
+                ),
+            
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: SizedBox(
+                    width: 300,
+                    height: 900,
+                    child: LuckyFlutterLights())
+                ),
               ],
             ),
           ),
 
           Align(
-            alignment: Alignment.centerRight,
-            child: SizedBox(
-              width: 300,
-              height: 900,
-              child: LuckyFlutterLights())
+            alignment: Alignment.topCenter,
+            child: GestureDetector(
+              onTap: () {
+                ref.read(luckyFlutterRouletteStateProvider.notifier)
+                    .spin();
+              },
+              child: const LuckyFlutterHeader()
+            ),
           ),
+
+          
 
           Consumer(
             builder:(context, ref, child) {

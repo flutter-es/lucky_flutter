@@ -48,7 +48,6 @@ class LuckyFlutterTriggerViewModel extends StateNotifier<LuckyRouletteState> {
     }
 
     await Future.delayed(0.75.seconds);
-    print(randomValues.length);
     if ((randomValues[0] == randomValues[1] && randomValues[1] == randomValues[2])) {
         
         state = LuckyRouletteState.win;

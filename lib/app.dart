@@ -24,7 +24,7 @@ class _LuckyFlutterAppState extends ConsumerState<LuckyFlutterApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: 'ctrl',
+      initialRoute: 'main',
       routes: {
         'ctrl': (context) => const LuckyFlutterLeverPage(),
         'main': (context) => const LuckyFlutterMain()

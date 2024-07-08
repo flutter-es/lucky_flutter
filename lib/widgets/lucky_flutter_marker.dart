@@ -9,55 +9,58 @@ class LuckyFlutterMarker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Center(
-          child: Transform.translate(
-            offset: const Offset(1, 30),
+    return SizedBox(
+      height: 300,
+      child: Stack(
+        children: [
+          Center(
+            child: Transform.translate(
+              offset: const Offset(1, 30),
+              child: Container(
+                width: 885,
+                height: 280,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(22),
+                  border: Border.all(
+                    color: LuckyFlutterColors.shadowBox.withOpacity(0.3),
+                    width: 19,
+                  ),
+                ),
+                alignment: Alignment.center,
+              ),
+            ),
+          ),
+          Center(
+            child: Transform.translate(
+              offset: const Offset(1, 25),
+              child: LuckySelectors(
+                color: LuckyFlutterColors.shadowBox.withOpacity(0.3),
+                width: 614,
+                height: 290,
+              ),
+            ),
+          ),
+          const LuckySelectors(
+            color: LuckyFlutterColors.markerBox,
+            width: 700,
+            height: 300,
+          ),
+          Center(
             child: Container(
-              width: 885,
-              height: 280,
+              width: 980,
+              height: 300,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(22),
                 border: Border.all(
-                  color: LuckyFlutterColors.shadowBox.withOpacity(0.3),
-                  width: 19,
+                  color: LuckyFlutterColors.markerBox,
+                  width: 25.0,
                 ),
               ),
               alignment: Alignment.center,
             ),
           ),
-        ),
-        Center(
-          child: Transform.translate(
-            offset: const Offset(1, 25),
-            child: LuckySelectors(
-              color: LuckyFlutterColors.shadowBox.withOpacity(0.3),
-              width: 614,
-              height: 290,
-            ),
-          ),
-        ),
-        const LuckySelectors(
-          color: LuckyFlutterColors.markerBox,
-          width: 700,
-          height: 280,
-        ),
-        Center(
-          child: Container(
-            width: 980,
-            height: 280,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(22),
-              border: Border.all(
-                color: LuckyFlutterColors.markerBox,
-                width: 25.0,
-              ),
-            ),
-            alignment: Alignment.center,
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
