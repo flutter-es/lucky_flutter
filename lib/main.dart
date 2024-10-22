@@ -14,3 +14,6 @@ void main() async {
   
   runApp(const ProviderScope(child: LuckyFlutterApp()));
 }
+
+// build the app:
+// flutter run -d chrome --web-renderer canvaskit --web-browser-flag '--disable-web-security' -t lib/main.dart --release
