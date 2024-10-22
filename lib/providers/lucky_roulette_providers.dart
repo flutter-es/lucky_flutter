@@ -11,6 +11,10 @@ final luckyWheelProvider = StateProvider<LuckyFlutterWheelMetadata>((ref) {
   return const LuckyFlutterWheelMetadata(index: -1, result: LuckyRouletteResults.none);
 });
 
+final luckyWheelMatchProvider = StateProvider<LuckyFlutterWheelMetadata>((ref) {
+  return const LuckyFlutterWheelMetadata(index: -1, result: LuckyRouletteResults.none);
+});
+
 final luckyFlutterRouletteStateProvider = StateNotifierProvider<LuckyFlutterTriggerViewModel, LuckyRouletteState>(
   (ref) => LuckyFlutterTriggerViewModel(LuckyRouletteState.none, ref)
 );

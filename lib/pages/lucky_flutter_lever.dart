@@ -53,6 +53,7 @@ class _LuckyFlutterLeverPageState extends ConsumerState<LuckyFlutterLeverPage> {
                         },
                         onVerticalDragEnd: (details) {
 
+                          print(lastDraggedValue);
                           if (lastDraggedValue > 50) {
                             ref.read(luckyFlutterTriggerServiceProvider).remoteSpin();
                             ref.read(soundServiceProvider).playSound(LuckyRouletteSounds.spin);

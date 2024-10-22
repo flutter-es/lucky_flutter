@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lucky_flutter/helpers/constants.dart';
@@ -30,26 +31,36 @@ class LuckyFlutterTriggerViewModel extends StateNotifier<LuckyRouletteState> {
 
     state = LuckyRouletteState.spin;
     int potentialResults = LuckyRouletteResults.values.length - 1;
-    List<int> randomValues = [];
-    int randomValue = Random().nextInt(potentialResults);
-    randomValues.add(randomValue);
-    
-    while(randomValues.length < Constants.numberOfRoulettes || !randomValues.contains(randomValue)) {
-      randomValues.add(randomValue);
-      randomValue = Random().nextInt(potentialResults);
-    }
+    List<int> randomValues = await compute((results) {
+      int randomValue = Random().nextInt(results);
+      List<int> vals = [];
+      vals.add(randomValue);
+      
+      while(vals.length < Constants.numberOfRoulettes || !vals.contains(randomValue)) {
+        vals.add(randomValue);
+        randomValue = Random().nextInt(results);
+      }
 
-    for(var (index, randomValue) in randomValues.indexed) {
+      return vals;
+
+    }, potentialResults);
+
+    for(var (index, randomValue) in randomValues.indexed) { 
 
       await Future.delayed(1.seconds);
       ref.read(luckyWheelProvider.notifier).state = LuckyFlutterWheelMetadata(
-        index: index, result: LuckyRouletteResults.values.firstWhere((v) => v.index == randomValue)
+        index: index, 
+        result: LuckyRouletteResults.values.firstWhere((v) => v.index == randomValue)
       );
     }
 
     await Future.delayed(0.75.seconds);
     if ((randomValues[0] == randomValues[1] && randomValues[1] == randomValues[2])) {
         
+        ref.read(luckyWheelMatchProvider.notifier).state = 
+        LuckyFlutterWheelMetadata(index: randomValues[0], 
+          result: LuckyRouletteResults.values.firstWhere((v) => v.index == randomValues[0]));
+
         state = LuckyRouletteState.win;
       }
       else {
