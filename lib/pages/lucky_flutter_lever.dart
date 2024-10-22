@@ -47,22 +47,18 @@ class _LuckyFlutterLeverPageState extends ConsumerState<LuckyFlutterLeverPage> {
                       ),
                       GestureDetector(
                         onVerticalDragUpdate: (details) {
-                          //ref.read(soundServiceProvider).playSound(LuckyRouletteSounds.clank);
                           lastDraggedValue = details.localPosition.dy * 0.15;
                           ref.read(leverValueProvider.notifier).state = lastDraggedValue;
                         },
                         onVerticalDragEnd: (details) {
 
-                          print(lastDraggedValue);
                           if (lastDraggedValue > 50) {
                             ref.read(luckyFlutterTriggerServiceProvider).remoteSpin();
-                            ref.read(soundServiceProvider).playSound(LuckyRouletteSounds.spin);
                           }
                           
                           Timer.periodic(0.000125.seconds, (timer) {
                             lastDraggedValue -= 1;
                             ref.read(leverValueProvider.notifier).state = lastDraggedValue;
-                            //ref.read(soundServiceProvider).playSound(LuckyRouletteSounds.clank);
 
                             if (lastDraggedValue <= 0) {
                               timer.cancel();

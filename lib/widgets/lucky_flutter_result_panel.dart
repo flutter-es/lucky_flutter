@@ -21,7 +21,9 @@ class LuckyFlutterResultPanel extends StatelessWidget {
       delay: 0.5.seconds,
       onInit: (controller) {
         Future.delayed(4.seconds, () {
-          controller.reverse();
+          if (context.mounted) {
+            controller.reverse();
+          }
         });
       },
     ).slideY(

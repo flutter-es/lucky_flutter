@@ -16,6 +16,8 @@ class LuckyFlutterTriggerViewModel extends StateNotifier<LuckyRouletteState> {
   Future<void> spin() async {
     state = LuckyRouletteState.none;
 
+    ref.read(soundServiceProvider).playSound(LuckyRouletteSounds.spin);
+
     for(var i = 0; i < Constants.numberOfRoulettes; i++) {
       await Future.delayed(0.125.seconds);
       ref.read(luckyWheelProvider.notifier).state = LuckyFlutterWheelMetadata(
@@ -57,14 +59,15 @@ class LuckyFlutterTriggerViewModel extends StateNotifier<LuckyRouletteState> {
     await Future.delayed(0.75.seconds);
     if ((randomValues[0] == randomValues[1] && randomValues[1] == randomValues[2])) {
         
-        ref.read(luckyWheelMatchProvider.notifier).state = 
-        LuckyFlutterWheelMetadata(index: randomValues[0], 
-          result: LuckyRouletteResults.values.firstWhere((v) => v.index == randomValues[0]));
+      ref.read(luckyWheelMatchProvider.notifier).state = 
+      LuckyFlutterWheelMetadata(index: randomValues[0], 
+        result: LuckyRouletteResults.values.firstWhere((v) => v.index == randomValues[0]));
 
-        state = LuckyRouletteState.win;
-      }
-      else {
-        state = LuckyRouletteState.none;
-      }
+      state = LuckyRouletteState.win;
+      await ref.read(soundServiceProvider).playSound(LuckyRouletteSounds.coinsfalling);
+    }
+    else {
+      state = LuckyRouletteState.none;
+    }
   }
 }
